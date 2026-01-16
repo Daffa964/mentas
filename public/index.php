@@ -17,6 +17,11 @@ include '../app/views/home/index.php';
             <div class="logo">
                 <img src="assets/images/Mentas-logo.png" alt="Mentas Logo">
             </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <nav class="navbar">
                 <a href="#">Home</a>
                 <a href="#">Blog</a>
@@ -30,6 +35,35 @@ include '../app/views/home/index.php';
             <a href="login.php" class="profile-icon" title="Login">
                 <i class="fa-regular fa-user"></i>
             </a>
+        </div>
+        <div class="mobile-menu">
+            <div class="mobile-menu-header">
+                <span class="close">X</span>
+            </div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li class="has-sub">
+                    <a href="#">Blog</a>
+                </li>
+                <li class="has-sub">
+                    <a href="#">Bulletin Sastra</a>
+                </li>
+                <li class="has-sub">
+                    <a href="#">Katalog</a>
+                </li>
+                <li class="has-sub">
+                    <a href="#">Jual Beli</a>
+                </li>
+                <li class="has-sub">
+                    <a href="#">Halaman Tiket</a>
+                </li>
+                <li class="has-sub">
+                    <a href="#">About</a>
+                </li>
+                <li class="has-sub">
+                    <a href="#">Contribute</a>
+                </li>
+            </ul>
         </div>
     </header>
 
@@ -127,6 +161,28 @@ include '../app/views/home/index.php';
         } else {
             header.classList.remove("scrolled");
         }
+    });
+    document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.querySelector(".menu-toggle");
+    const mobileMenu = document.querySelector(".mobile-menu");
+    const closeBtn = document.querySelector(".mobile-menu .close");
+
+    toggle.addEventListener("click", () => {
+        mobileMenu.classList.add("active");
+        document.body.style.overflow = "hidden";
+    });
+
+    closeBtn.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
+        document.body.style.overflow = "";
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 992) {
+            mobileMenu.classList.remove("active");
+            document.body.style.overflow = "";
+        }
+    });
     });
     </script>
 
