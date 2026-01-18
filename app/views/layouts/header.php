@@ -5,8 +5,15 @@ $blogCategories = getCategoriesByType('blog');
 <header class="header">
         <div class="header-container">
             <div class="logo">
-                <img src="<?= BASE_URL ?>/assets/images/Mentas-logo.png" alt="Mentas Logo">
-            </div>
+            <img src="<?= BASE_URL ?>/assets/images/Mentas-logo.png" 
+                alt="Mentas Logo" 
+                class="logo-default">
+
+            <img src="<?= BASE_URL ?>/assets/images/mentas-putih.png" 
+                alt="Mentas Logo White" 
+                class="logo-sticky">
+        </div>
+
             <div class="menu-toggle">
                 <span></span>
                 <span></span>

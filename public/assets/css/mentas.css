@@ -12,7 +12,6 @@ body {
 /* =============================
    HEADER
    ============================= */
-
 .header {
     width: 100%;
     padding: 30px 60px;
@@ -35,19 +34,12 @@ body {
     justify-content: space-between;
 }
 
-/* Saat di-scroll */
-/* SAAT STICKY */
+
+/* ===== STICKY ===== */
 .header.scrolled {
     background: #d52c2c;
     padding: 15px 60px;
     border-bottom: 3px solid #0000004b;
-}
-
-/* Logo diberi border putih */
-.header.scrolled .logo img {
-    background: #fff;
-    padding: 6px 10px;
-    border-radius: 6px;
 }
 
 /* Logo & navbar tetap */
@@ -56,11 +48,31 @@ body {
     align-items: center;
 }
 
+/* Logo default */
 .logo img {
-    height: 42px; /* atur sesuai logo */
+    height: 42px;
     width: auto;
     display: block;
+    transition: transform 0.25s ease, opacity 0.25s ease;
 }
+
+
+/* Awal */
+.logo-sticky {
+    display: none;
+}
+
+/* Saat sticky */
+.header.scrolled .logo-default {
+    display: none;
+}
+
+.header.scrolled .logo-sticky {
+    display: block;
+    transform: scale(3.6);   /* ⬅️ INI YANG TERASA */
+    transform-origin: left center;
+}
+
 
 .profile-icon {
     width: 40px;
@@ -115,35 +127,41 @@ body {
     color: #d52c2c;
 }
 
-/* GARIS BAWAH (hidden) */
-.navbar a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0;
-    height: 3px;
-    background: #fff;
-    transition: width 0.25s ease;
-}
+
 /* Dropdown */
 .nav-item {
     position: relative;
+    display: flex;
+    align-items: center;
+}
+/* Hover */
+.header.scrolled .navbar a {
+    color: #fff;
+}
+
+.header.scrolled .navbar a:hover {
+    color: #000;
+    font-weight: 600;;
+}
+
+.contact {
+    font-weight: 600;
 }
 
 .dropdown-menu {
     display: none;
     position: absolute;
+    top: calc(100% + 0px);   /* ⬅️ INI KUNCI */
     left: 0;
-    background: #ffffff;
-    min-width: 200px;
-    border-radius: 6px;
+    background: #fff;
+    min-width: 220px;
+    border-radius: 8px;
     box-shadow: 0 12px 30px rgba(0,0,0,.15);
     z-index: 9999;
 }
 
 .header.scrolled .dropdown-menu {
-    top: calc(100% + 10px);
+    top: calc(100% + 0px);
 }
 
 .nav-item:hover .dropdown-menu {
@@ -159,19 +177,6 @@ body {
 
 .dropdown-menu a:hover {
     color: #d52c2c;
-}
-
-/* Hover */
-.header.scrolled .navbar a {
-    color: #fff;
-}
-
-.header.scrolled .navbar a:hover::after {
-    width: 100%;
-}
-
-.contact {
-    font-weight: 600;
 }
 
 /* Hamburger */
@@ -277,6 +282,21 @@ body {
     padding: 16px 0;
     color: #ccc;
 }
+
+/* Warna Dropdown */
+
+.header.scrolled .dropdown-menu a {
+    color: #d52c2c; /* MERAH */
+}
+
+.header.scrolled .dropdown-menu a:hover {
+    color: #000; /* HITAM */
+}
+
+.header.scrolled .dropdown-menu a::after {
+    display: none;
+}
+
 
 /* =============================
    HERO SECTION
