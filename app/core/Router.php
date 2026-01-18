@@ -1,5 +1,6 @@
 <?php
 require_once "../app/core/Controller.php";
+
 class Router
 {
     public function dispatch()
@@ -7,16 +8,30 @@ class Router
         // default
         $controllerName = 'HomeController';
         $method = 'index';
+        $params = [];
 
         if (isset($_GET['url'])) {
             $url = explode('/', rtrim($_GET['url'], '/'));
 
+            // contoh: /blog
             if (!empty($url[0])) {
-                $controllerName = ucfirst($url[0]) . 'Controller';
-            }
+                $possibleController = ucfirst($url[0]) . 'Controller';
+                $controllerPath = "../app/controllers/$possibleController.php";
 
-            if (isset($url[1])) {
-                $method = $url[1];
+                // JIKA CONTROLLER ADA → PAKAI ROUTE LAMA
+                if (file_exists($controllerPath)) {
+                    $controllerName = $possibleController;
+                    if (isset($url[1])) {
+                        $method = $url[1];
+                    }
+                    $params = array_slice($url, 2);
+                } 
+                // JIKA TIDAK ADA → CONTENT ENGINE
+                else {
+                    $controllerName = 'ContentController';
+                    $method = 'resolve';
+                    $params = $url; // ['blog', 'slug']
+                }
             }
         }
 
@@ -34,6 +49,6 @@ class Router
             die("Method tidak ditemukan");
         }
 
-        $controller->$method();
+        call_user_func_array([$controller, $method], $params);
     }
 }

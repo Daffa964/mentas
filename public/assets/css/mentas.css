@@ -126,6 +126,40 @@ body {
     background: #fff;
     transition: width 0.25s ease;
 }
+/* Dropdown */
+.nav-item {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    background: #ffffff;
+    min-width: 200px;
+    border-radius: 6px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.15);
+    z-index: 9999;
+}
+
+.header.scrolled .dropdown-menu {
+    top: calc(100% + 10px);
+}
+
+.nav-item:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 16px;
+    white-space: nowrap;
+    color:#000;
+}
+
+.dropdown-menu a:hover {
+    color: #d52c2c;
+}
 
 /* Hover */
 .header.scrolled .navbar a {
@@ -219,16 +253,30 @@ body {
     align-items: center;       /* CENTER VERTICAL */
     padding: 22px 0;
     text-decoration: none;
-    color: #fff;
+    color: #d52c2c;
     font-size: 20px;
     letter-spacing: 0.5px;
 }
 
 .mobile-menu a:hover {
-    color:#d52c2c;
+    color:#eee;
 }
 
+/* SUB MENU MOBILE */
+.mobile-menu .sub-menu {
+    display: none;
+    background: #181818;
+}
 
+.mobile-menu li.open > .sub-menu {
+    display: block;
+}
+
+.mobile-menu .sub-menu a {
+    font-size: 16px;
+    padding: 16px 0;
+    color: #ccc;
+}
 
 /* =============================
    HERO SECTION
@@ -471,6 +519,46 @@ body {
     font-weight: 500;
     line-height: 1.8;
 }
+
+/* content */
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.blog-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.blog-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.blog-card-body {
+    padding: 16px;
+}
+
+.blog-category {
+    font-size: 12px;
+    color: #888;
+}
+
+.blog-detail {
+    max-width: 800px;
+    margin: auto;
+}
+
+.blog-body {
+    line-height: 1.8;
+    margin-top: 24px;
+}
+
 
 
 /* =============================
